@@ -1,0 +1,33 @@
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+  app:
+    build: ./
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+      - qdrant
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/
+      - MONGODB_DATABASE=project
+      - QDRANT_URL=http://qdrant:6333
+      - ALGORITHM=HS256
+      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+
+volumes:
+  mongo_data:
+  qdrant_storage:
