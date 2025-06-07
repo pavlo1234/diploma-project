@@ -111,3 +111,18 @@
 
 3. **Відкрити в браузері**  
    👉 [http://localhost:7860/](http://localhost:7860/)
+
+## 🧪 Recommendations — Тестування
+
+1. **Встановити бібліотеку Gradio**  
+   ```bash
+   pip install gradio
+   ```
+
+2. **Запустити інтерфейс чату**  
+   ```bash
+   python app/scripts/gradio_recommendations.py
+   ```
+
+3. **Відкрити в браузері**  
+   👉 [http://localhost:7860/](http://localhost:7860/)
